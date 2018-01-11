@@ -23,7 +23,7 @@ public class VersionComparator implements Comparator<String> {
 		String[] version2Parts = version2.split("\\.");
 		
 		int compare = 0;
-		for (int i = 0; i < Math.min(version2Parts.length, version1Parts.length); ++i) {
+		for (int i = 0; i < Math.min(version1Parts.length, version2Parts.length); ++i) {
 			
 			// if a number is not found, the default is 0
 			int version1Num = i < version1Parts.length ? Integer.parseInt(version1Parts[i]) : 0;
@@ -41,8 +41,7 @@ public class VersionComparator implements Comparator<String> {
 				break;
 			}
 		}
-		
-		// if we have a older version ask for downloading the last
+
 		return compare;
 	}
 }
