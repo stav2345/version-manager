@@ -19,20 +19,20 @@ public class VersionComparator implements Comparator<String> {
 		if (version1.equals(version2))
 			return 0;
 		
-		String[] current = version1.split("\\.");
-		String[] latest = version2.split("\\.");
+		String[] version1Parts = version1.split("\\.");
+		String[] version2Parts = version2.split("\\.");
 		
 		int compare = 0;
-		for (int i = 0; i < Math.min(latest.length, current.length); ++i) {
+		for (int i = 0; i < Math.min(version2Parts.length, version1Parts.length); ++i) {
 			
 			// if a number is not found, the default is 0
-			int currentNum = i < current.length ? Integer.parseInt(current[i]) : 0;
-			int latestNum = i < latest.length ? Integer.parseInt(latest[i]) : 0;
+			int version1Num = i < version1Parts.length ? Integer.parseInt(version1Parts[i]) : 0;
+			int version2Num = i < version2Parts.length ? Integer.parseInt(version2Parts[i]) : 0;
 			
-			if (currentNum == latestNum)
+			if (version1Num == version2Num)
 				continue;
 			
-			if (currentNum < latestNum) {
+			if (version1Num < version2Num) {
 				compare = -1;
 				break;
 			}
